@@ -34,6 +34,8 @@ class MyLinkedList:
     def addAtHead(self, val):
         node = MyLinkedList.__Node(val)
         node.setNext(self.first.getNext())
+        if self.first.getNext() is None:
+            self.last = node
         self.first.setNext(node)
         self.num += 1
 
@@ -43,7 +45,7 @@ class MyLinkedList:
         self.last = node
         self.num += 1
 
-    def addAtIndex(self, index, val):
+    def addAtIndex(self, index, val):  # Still got bug
         cursor = self.first
         if index < self.num:
             for i in range(index):
@@ -70,21 +72,25 @@ class MyLinkedList:
 
 # Your MyLinkedList object will be instantiated and called as such:
 obj = MyLinkedList()
+#print(obj.first.getNext() is None)
 # param_1 = obj.get(index)
-#obj.addAtHead(1)
-#obj.addAtHead(2)
-#obj.addAtHead(3)
-obj.addAtTail(4)
-obj.addAtTail(5)
+
+obj.addAtHead(3)
+obj.addAtHead(2)
+obj.addAtHead(1)
+#obj.addAtTail(4)
+#obj.addAtTail(5)
 #obj.addAtTail(6)
 
-#obj.addAtIndex(0,2)
-#obj.addAtIndex(1,3)
+obj.addAtIndex(2,9)
+#obj.addAtIndex(2,8)
 #obj.addAtIndex(1,4)
 #obj.addAtIndex(1,3)
 #obj.addAtIndex(1,4)
-print(obj.get(0), obj.get(1), obj.get(2), obj.get(3))
-print(obj.first.getNext().getVal())
+
+print(obj.get(0), obj.get(1), obj.get(2), obj.get(3), obj.get(4), obj.get(5))
+#print(obj.first.getNext().getVal())
+
 #obj.deleteAtIndex(1)
 #print("After delete index 1's node: ")
 #print(obj.get(0), obj.get(1), obj.get(2))
